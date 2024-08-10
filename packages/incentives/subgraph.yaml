@@ -1,0 +1,80 @@
+specVersion: 0.0.5
+description: Camelot Incentives Campaigns
+repository: https://github.com/CamelotLabs/incentives-campaign-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: campaignFactory
+    network: arbitrum-one
+    source:
+      address: '0x8f63a030a9c4ad80c65bd54df824e3b386c111c3'
+      abi: CampaignFactory
+      startBlock: 226026624
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/mappings/campaignFactory.ts
+      entities:
+        - CampaignFactory
+        - Campaign
+        - User
+        - Token
+      abis:
+        - name: CampaignFactory
+          file: ./abis/CampaignFactory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: >-
+            CampaignCreated(uint256,indexed address,indexed address,indexed
+            address,uint256,uint48,uint48,uint8,bytes)
+          handler: handleCampaignCreated
+        - event: CampaignCanceled(uint256)
+          handler: handleCampaignCanceled
+        - event: CampaignPaused(uint256)
+          handler: handleCampaignPaused
+        - event: CampaignUnpaused(uint256)
+          handler: handleCampaignUnpaused
+        - event: CampaignUpdated(uint256,indexed address,uint256,uint96)
+          handler: handleCampaignUpdated
+        - event: CustomFeeUpdated(address,int256)
+          handler: handleCustomFeeUpdated
+        - event: ProtocolFeeUpdated(int256)
+          handler: handleProtocolFeeUpdated
+        - event: TokenAllowedStatusUpdated(indexed address,bool)
+          handler: handleTokenAllowedStatusUpdated
+        - event: TokenMinIncentiveUpdated(indexed address,uint256)
+          handler: handleTokenMinIncentiveUpdated
+  - kind: ethereum/contract
+    name: distributor
+    network: arbitrum-one
+    source:
+      address: '0x9a230691817affcdacab3e99109e64700896e6e6'
+      abi: Distributor
+      startBlock: 226026624
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/mappings/distributor.ts
+      entities:
+        - Distributor
+        - User
+        - Token
+        - Claim
+      abis:
+        - name: Distributor
+          file: ./abis/Distributor.json
+      eventHandlers:
+        - event: >-
+            Claimed(indexed address,indexed address,indexed
+            address,uint256,uint256,bytes)
+          handler: handleClaimed
+        - event: DistributorPaused()
+          handler: handleDistributorPaused
+        - event: DistributorUnpaused()
+          handler: handleDistributorUnpaused
+        - event: RootUpdated(bytes32)
+          handler: handleRootUpdated

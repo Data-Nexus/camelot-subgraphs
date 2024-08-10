@@ -1,0 +1,132 @@
+type CampaignFactory @entity {
+  # campaign factory address
+  id: ID!
+
+  # percent fee to create campaign
+  fee: BigDecimal!
+
+  # all campaigns
+  campaigns: [Campaign!]
+
+  # distributor contract
+  distributor: Distributor!
+
+  # campaign factory last updated time
+  lastUpdated: BigInt!
+}
+
+type Distributor @entity {
+  # distributor address
+  id: ID!
+
+  # distributor claims
+  claims: [Claim!]
+
+  # distributor paused
+  paused: Boolean!
+
+  # merkle root
+  root: Bytes
+
+  # distributor last updated time
+  lastUpdated: BigInt!
+}
+
+type Campaign @entity {
+  # campaign ID
+  id: ID!
+
+  # campaign creator address
+  creator: User!
+
+  # campaign token address
+  token: Token!
+
+  # campaign pool address
+  pool: Bytes!
+
+  # amount of rewards token to be distributed for the campaign
+  rewards: BigDecimal!
+
+  # campaign status: cancelled, paused, active
+  status: String!
+
+  # incentive type: allow, deny
+  incentiveType: String!
+
+  # campaign start time
+  startTime: BigInt!
+
+  # campaign end time
+  endTime: BigInt!
+
+  # campaign created time
+  createdAt: BigInt!
+
+  # campaign last updated time
+  lastUpdated: BigInt!
+}
+
+type User @entity {
+  # user address
+  id: ID!
+
+  # custom fee % to create campaign
+  fee: BigDecimal!
+
+  # campaigns created by the user
+  campaigns: [Campaign!] @derivedFrom(field: "creator")
+
+  # user claims
+  claims: [Claim!] @derivedFrom(field: "user")
+
+  # user last updated time
+  lastUpdated: BigInt!
+}
+
+type Token @entity {
+  # token address
+  id: ID!
+
+  # token is allowed as a reward
+  allowed: Boolean!
+
+  # minimum amount a token can be given per campaign
+  minimum: BigDecimal!
+
+  # token name
+  name: String!
+
+  # token symbol
+  symbol: String!
+
+  # token decimals
+  decimals: BigInt!
+
+  # token last updated time
+  lastUpdated: BigInt!
+}
+
+type Claim @entity {
+  # claim ID
+  id: Bytes!
+
+  # claimer address
+  user: User!
+
+  # campaign pool address
+  pool: Bytes!
+
+  # claim token address
+  token: Token!
+
+  # amount of token claimed
+  amount: BigDecimal!
+
+  # accumulated amount of token claimed
+  accAmount: BigDecimal!
+
+  # timestamp of claim
+  timestamp: BigInt!
+}
+

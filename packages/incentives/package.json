@@ -1,0 +1,10 @@
+{
+  "name": "incentives",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --studio incentives"
+  }
+}

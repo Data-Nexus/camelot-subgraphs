@@ -1,0 +1,51 @@
+{
+  "name": "subgraphs",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "set-config": "ts-node-esm -P tsconfig.node.json config/setConfig.ts",
+
+    "set-config-ammv2": "ts-node-esm -P tsconfig.node.json config/setConfig.ts ammv2",
+    "set-config-ammv3": "ts-node-esm -P tsconfig.node.json config/setConfig.ts ammv3",
+    "set-config-blocks": "ts-node-esm -P tsconfig.node.json config/setConfig.ts blocks",
+    "set-config-incentives": "ts-node-esm -P tsconfig.node.json config/setConfig.ts incentives",
+
+    "codegen": "pnpm recursive run codegen",
+
+    "codegen-ammv2": "pnpm --filter amm-v2 run codegen",
+    "codegen-ammv3": "pnpm --filter ammV3 run codegen",
+    "codegen-blocks": "pnpm --filter blocks run codegen",
+    "codegen-incentives": "pnpm --filter incentives run codegen",
+
+    "build": "pnpm recursive run build",
+
+    "build-ammv2": "pnpm --filter ammV2 run build",
+    "build-ammv3": "pnpm --filter ammV3 run build",
+    "build-blocks": "pnpm --filter blocks run build",
+    "build-incentives": "pnpm --filter incentives run build",
+
+    "deploy": "pnpm recursive run deploy",
+
+    "deploy-ammv2": "pnpm --filter ammV2 run deploy",
+    "deploy-ammv3": "pnpm --filter ammV3 run deploy",
+    "deploy-blocks": "pnpm --filter blocks run deploy",
+    "deploy-incentives": "pnpm --filter incentives run deploy"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.69.1",
+    "@graphprotocol/graph-ts": "0.31.0",
+    "@types/js-yaml": "^4.0.9",
+    "js-yaml": "^4.1.0",
+    "typescript": "^5.4.2",
+    "ts-node": "10.9.2"
+  },
+  "devDependencies": {
+    "matchstick-as": "0.5.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
