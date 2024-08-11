@@ -1,4 +1,4 @@
-import { TARGET_CHAIN } from '../../../../config/chains'
+import TARGET_CHAIN from '../../../../config/chains'
 import { BigDecimal } from '@graphprotocol/graph-ts/index'
 
 const CAMPAIGN_FACTORY_ADDRESS = TARGET_CHAIN.campaignFactory

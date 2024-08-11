@@ -6,12 +6,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "set-config": "ts-node-esm -P tsconfig.node.json config/setConfig.ts",
+    "get-chain-config-dev": "curl -s https://dev.api.camelot.exchange/v2/chains > ./config/chainConfig.json",
+    "get-chain-config-prod": "curl -s https://api.camelot.exchange/v2/chains > ./config/chainConfig.json",
 
-    "set-config-ammv2": "ts-node-esm -P tsconfig.node.json config/setConfig.ts ammv2",
-    "set-config-ammv3": "ts-node-esm -P tsconfig.node.json config/setConfig.ts ammv3",
-    "set-config-blocks": "ts-node-esm -P tsconfig.node.json config/setConfig.ts blocks",
-    "set-config-incentives": "ts-node-esm -P tsconfig.node.json config/setConfig.ts incentives",
+    "set-config": "pnpm run get-chain-config-dev && ts-node-esm -P tsconfig.node.json config/setConfig.ts",
+
+    "set-config-ammv2": "pnpm run get-chain-config-dev && ts-node-esm -P tsconfig.node.json config/setConfig.ts ammv2",
+    "set-config-ammv3": "pnpm run get-chain-config-dev && ts-node-esm -P tsconfig.node.json config/setConfig.ts ammv3",
+    "set-config-blocks": "pnpm run get-chain-config-dev && s-node-esm -P tsconfig.node.json config/setConfig.ts blocks",
+    "set-config-incentives": "pnpm run get-chain-config-dev && ts-node-esm -P tsconfig.node.json config/setConfig.ts incentives",
 
     "codegen": "pnpm recursive run codegen",
 

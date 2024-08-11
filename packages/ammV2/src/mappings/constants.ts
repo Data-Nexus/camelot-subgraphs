@@ -1,6 +1,6 @@
 import { Factory as FactoryContract } from '../../generated/templates/Pair/Factory'
 import { BigInt, BigDecimal, Address } from '@graphprotocol/graph-ts'
-import { TARGET_CHAIN } from '../../../../config/chains'
+import TARGET_CHAIN from '../../../../config/chains'
 
 const ADDRESS_ZERO = '0x0000000000000000000000000000000000000000'
 const FACTORY_ADDRESS = TARGET_CHAIN.factoryV2
