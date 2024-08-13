@@ -5,7 +5,7 @@
     "set-config": "ts-node-esm -P tsconfig.node.json setConfig.ts",
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ blocklytics/ethereum-blocks"
+    "deploy": "graph deploy $name --version-label $version --node https://subgraphs.alchemy.com/api/subgraphs/deploy --deploy-key $deployKey --ipfs https://ipfs.satsuma.xyz"
   },
   "devDependencies": {
     "common": "workspace:*"

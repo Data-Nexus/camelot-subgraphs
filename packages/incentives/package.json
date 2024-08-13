@@ -6,7 +6,7 @@
     "set-config": "ts-node-esm -P tsconfig.node.json setConfig.ts",
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --studio incentives"
+    "deploy": "graph deploy $name --version-label $version --node https://subgraphs.alchemy.com/api/subgraphs/deploy --deploy-key $deployKey --ipfs https://ipfs.satsuma.xyz"
   },
   "devDependencies": {
     "common": "workspace:*"
