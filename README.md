@@ -7,18 +7,22 @@
 - Incentives
 
 ## Building & Deploying
-Make sure to edit `TARGET_CHAIN` in `config/chains.js` to point to the correct chain. New chains must be declared in `SupportedChains` and declared as a new `ChainInfo` class to satisfy graph's Assembly Script type checking.
+Declare env vars
 
-Set chain config for all subgraphs
-```yarn set-config```
+```
+// chain ID for given deployment
+chainId=
 
-Codegen all subgraphs
-```yarn codegen```
+// new subgraph version to deploy (edit this in deployAll.ts for each subgraph, will eventually improve this flow)
+version=
 
-Build all subgraphs
-```yarn build```
+// subgraph deploy key
+deployKey
+```
 
-Deploy all subgraphs
-```yarn deploy```
+Deploy all subgraphs to given network
+`pnpm run deploy-all-prod` or `pnpm run deploy-all-dev`
 
-All commands can be run for individual subgraphs if we don't want to run them all at once. Reference top level `package.json`.
+Comment out the deployments in `deployAll.ts` to skip.
+
+All individual build, codegen, etc commands can be run for individual subgraphs from the top level using `pnpm run` or by invoking them from within the sub repos directly. 
