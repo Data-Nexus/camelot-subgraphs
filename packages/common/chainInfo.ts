@@ -1,6 +1,6 @@
 class ChainInfo {
   // UNIVERSAL SELECTED CHAIN PARAM - USED FOR `network` IN `subgraph.yaml`
-  selectedChain: string;
+  network: string;
 
   // AMM V2 PARAMS
   factoryV2: string;
@@ -24,7 +24,7 @@ class ChainInfo {
   apiVersion: string;
   startBlockAmmV3: number;
 
-  // BLOCKS PARAMS - ONLY USES `selectedChain`
+  // BLOCKS PARAMS - ONLY USES `network`
 
   // INCENTIVES PARAMS
   campaignFactory: string;
@@ -33,7 +33,7 @@ class ChainInfo {
 
   constructor(
     // UNIVERSAL SELECTED CHAIN PARAM - USED FOR `network` IN `subgraph.yaml`
-    selectedChain: string,
+    network: string,
 
     // AMM V2 PARAMS
     factoryV2: string,
@@ -63,7 +63,7 @@ class ChainInfo {
     startBlockIncentives: number,
   ) {
     // UNIVERSAL SELECTED CHAIN PARAM - USED FOR `network` IN `subgraph.yaml`
-    this.selectedChain = selectedChain.toLowerCase()
+    this.network = network.toLowerCase()
 
     // AMM V2 PARAMS
     this.factoryV2 = factoryV2.toLowerCase()

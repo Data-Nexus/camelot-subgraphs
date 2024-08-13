@@ -6,5 +6,5 @@
     "allowImportingTsExtensions": true,
     "esModuleInterop": true,
   },
-  "include": ["config/*"]
+  "include": ["deployAll.ts"]
 }

@@ -3,13 +3,17 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
+    "set-config": "ts-node-esm -P tsconfig.node.json setConfig.ts",
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --studio camelot-amm",
+    "deploy": "graph deploy $name --version-label $version --node https://subgraphs.alchemy.com/api/subgraphs/deploy --deploy-key $deployKey --ipfs https://ipfs.satsuma.xyz",
     "deploy-hosted": "graph deploy --node https://api.thegraph.com/deploy/ --product hosted-service camelotlabs/camelot-amm",
     "create-local": "graph create --node http://localhost:8020/ camelot-amm-v2",
     "remove-local": "graph remove --node http://localhost:8020/ camelot-amm-v2",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 camelot-amm-v2",
     "test": "graph test"
+  },
+  "devDependencies": {
+    "common": "workspace:*"
   }
 }

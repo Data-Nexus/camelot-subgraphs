@@ -3,34 +3,29 @@
   "private": true,
   "type": "module",
   "version": "1.0.0",
-  "description": "",
+  "description": "Camelot Master Subgraph Monorepo",
   "main": "index.js",
   "scripts": {
-    "get-chain-config-dev": "curl -s https://dev.api.camelot.exchange/v2/chains > ./config/chainConfig.json",
-    "get-chain-config-prod": "curl -s https://api.camelot.exchange/v2/chains > ./config/chainConfig.json",
+    "deploy-all-dev": "pnpm --filter common run get-chain-config-dev && ts-node-esm -P tsconfig.node.json deployAll",
+    "deploy-all-prod": "pnpm --filter common run get-chain-config-prod && ts-node-esm -P tsconfig.node.json deployAll",
 
-    "set-config": "pnpm run get-chain-config-dev && ts-node-esm -P tsconfig.node.json config/setConfig.ts",
+    "get-config-common-dev": "pnpm --filter common run get-chain-config-dev",
+    "get-config-common-prod": "pnpm --filter common run get-chain-config-dev",
 
-    "set-config-ammv2": "pnpm run get-chain-config-dev && ts-node-esm -P tsconfig.node.json config/setConfig.ts ammv2",
-    "set-config-ammv3": "pnpm run get-chain-config-dev && ts-node-esm -P tsconfig.node.json config/setConfig.ts ammv3",
-    "set-config-blocks": "pnpm run get-chain-config-dev && s-node-esm -P tsconfig.node.json config/setConfig.ts blocks",
-    "set-config-incentives": "pnpm run get-chain-config-dev && ts-node-esm -P tsconfig.node.json config/setConfig.ts incentives",
-
-    "codegen": "pnpm recursive run codegen",
+    "set-config-ammv2": "pnpm --filter ammv2 run set-config",
+    "set-config-ammv3": "pnpm --filter ammv3 run set-config",
+    "set-config-blocks": "pnpm --filter blocks run set-config",
+    "set-config-incentives": "pnpm --filter incentives run set-config",
 
     "codegen-ammv2": "pnpm --filter amm-v2 run codegen",
     "codegen-ammv3": "pnpm --filter ammV3 run codegen",
     "codegen-blocks": "pnpm --filter blocks run codegen",
     "codegen-incentives": "pnpm --filter incentives run codegen",
 
-    "build": "pnpm recursive run build",
-
     "build-ammv2": "pnpm --filter ammV2 run build",
     "build-ammv3": "pnpm --filter ammV3 run build",
     "build-blocks": "pnpm --filter blocks run build",
     "build-incentives": "pnpm --filter incentives run build",
-
-    "deploy": "pnpm recursive run deploy",
 
     "deploy-ammv2": "pnpm --filter ammV2 run deploy",
     "deploy-ammv3": "pnpm --filter ammV3 run deploy",
@@ -46,7 +41,9 @@
     "ts-node": "10.9.2"
   },
   "devDependencies": {
-    "matchstick-as": "0.5.0"
+    "matchstick-as": "0.5.0",
+    "command-line-args": "^5.2.1",
+    "command-line-usage": "^7.0.1"
   },
   "keywords": [],
   "author": "",

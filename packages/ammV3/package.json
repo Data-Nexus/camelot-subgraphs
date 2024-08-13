@@ -5,6 +5,7 @@
   "repository": "https://github.com/graphprotocol/algebra-subgraph",
   "license": "GPL-3.0-or-later",
   "scripts": {
+    "set-config": "ts-node-esm -P tsconfig.node.json setConfig.ts",
     "codegen": "graph codegen --output-dir src/types/",
     "build": "graph build",
     "create-local": "graph create cryptoalgebra/algebra --node http://127.0.0.1:8020",
@@ -17,6 +18,7 @@
     "@typescript-eslint/parser": "^2.0.0",
     "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "common": "workspace:*"
   }
 }

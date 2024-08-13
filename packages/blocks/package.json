@@ -2,8 +2,12 @@
   "name": "blocks",
   "license": "UNLICENSED",
   "scripts": {
+    "set-config": "ts-node-esm -P tsconfig.node.json setConfig.ts",
     "codegen": "graph codegen",
     "build": "graph build",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ blocklytics/ethereum-blocks"
+  },
+  "devDependencies": {
+    "common": "workspace:*"
   }
 }

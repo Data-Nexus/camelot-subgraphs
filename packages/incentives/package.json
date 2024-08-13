@@ -3,8 +3,12 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
+    "set-config": "ts-node-esm -P tsconfig.node.json setConfig.ts",
     "codegen": "graph codegen",
     "build": "graph build",
     "deploy": "graph deploy --studio incentives"
+  },
+  "devDependencies": {
+    "common": "workspace:*"
   }
 }

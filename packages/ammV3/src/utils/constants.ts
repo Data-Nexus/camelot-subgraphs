@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 import { BigInt, BigDecimal, Address } from '@graphprotocol/graph-ts'
 import { Factory as FactoryContract } from '../types/templates/Pool/Factory'
-import TARGET_CHAIN from '../../../../config/chains'
+import { TARGET_CHAIN } from 'common'
 
 const ADDRESS_ZERO = '0x0000000000000000000000000000000000000000'
 const FACTORY_ADDRESS = TARGET_CHAIN.factoryV3

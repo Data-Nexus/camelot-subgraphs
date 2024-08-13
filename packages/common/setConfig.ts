@@ -7,7 +7,7 @@ import TARGET_CHAIN from "./chainConfig.ts"
 
 const {
   // UNIVERSAL SELECTED CHAIN PARAM - USED FOR `network` IN `subgraph.yaml`
-  selectedChain,
+  network,
 
   // AMM V2 PARAMS
   factoryV2,
@@ -43,10 +43,10 @@ const saveConfigAmmV2 = () => {
   const { subgraphYaml, subgraphPath } = loadSubgraphConfig('ammV2')
 
   const factory = subgraphYaml.dataSources[0] as any
-  factory.network = selectedChain
+  factory.network = network
   factory.source.address = factoryV2
   factory.source.startBlock = startBlockAmmV2
-  subgraphYaml.templates[0].network = selectedChain
+  subgraphYaml.templates[0].network = network
 
   saveSubgraphConfig(subgraphYaml, subgraphPath)
 }
@@ -57,17 +57,17 @@ const saveConfigAmmV3 = () => {
   const factory = subgraphYaml.dataSources[0]
   const NFTPositionManager = subgraphYaml.dataSources[1]
 
-  factory.network = selectedChain
+  factory.network = network
   factory.source.address = factoryV3
   factory.source.startBlock = startBlockAmmV3
   factory.mapping.apiVersion = apiVersion
 
-  NFTPositionManager.network = selectedChain
+  NFTPositionManager.network = network
   NFTPositionManager.source.address = nftPositionManager
   NFTPositionManager.source.startBlock = startBlockAmmV3
   NFTPositionManager.mapping.apiVersion = apiVersion
 
-  subgraphYaml.templates[0].network = selectedChain
+  subgraphYaml.templates[0].network = network
   subgraphYaml.templates[0].mapping.apiVersion = apiVersion
 
   saveSubgraphConfig(subgraphYaml, subgraphPath)
@@ -78,7 +78,7 @@ const saveConfigBlocks = () => {
 
   const converterRegistry = subgraphYaml.dataSources[0]
 
-  converterRegistry.network = selectedChain
+  converterRegistry.network = network
 
   saveSubgraphConfig(subgraphYaml, subgraphPath)
 }
@@ -87,12 +87,12 @@ const saveConfigIncentives = () => {
   const { subgraphYaml, subgraphPath } = loadSubgraphConfig('incentives')
 
   const subgraphCampaignFactory = subgraphYaml.dataSources[0] as any
-  subgraphCampaignFactory.network = selectedChain,
+  subgraphCampaignFactory.network = network,
   subgraphCampaignFactory.source.address = campaignFactory
   subgraphCampaignFactory.source.startBlock = startBlockIncentives
 
   const subgraphDistributor = subgraphYaml.dataSources[1] as any
-  subgraphDistributor.network = selectedChain,
+  subgraphDistributor.network = network,
   subgraphDistributor.source.address = distributor
   subgraphDistributor.source.startBlock = startBlockIncentives
 
