@@ -6,8 +6,8 @@
   "description": "Camelot Master Subgraph Monorepo",
   "main": "index.js",
   "scripts": {
-    "deploy-all-dev": "pnpm --filter common run get-chain-config-dev && ts-node-esm -P tsconfig.node.json deployAll",
-    "deploy-all-prod": "pnpm --filter common run get-chain-config-prod && ts-node-esm -P tsconfig.node.json deployAll",
+    "deploy-all-dev": "pnpm --filter common run get-chain-config-dev && ts-node-esm -P tsconfig.node.json deployAll.ts",
+    "deploy-all-prod": "pnpm --filter common run get-chain-config-prod && ts-node-esm -P tsconfig.node.json deployAll.ts",
 
     "get-config-common-dev": "pnpm --filter common run get-chain-config-dev",
     "get-config-common-prod": "pnpm --filter common run get-chain-config-dev",
