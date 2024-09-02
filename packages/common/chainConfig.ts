@@ -1,10 +1,21 @@
 import process from "process"
 import fs from "fs"
 import path from "path"
+import { fileURLToPath } from 'url'
 
 import ChainInfo from "./chainInfo.ts"
 
-const chainConfigRaw = fs.readFileSync(path.join(process.cwd(), "config", "chainConfig.json"), "utf-8")
+const getCurrentDir = () => {
+  if (typeof __dirname !== 'undefined') {
+    return __dirname
+  }
+  
+  const __filename = fileURLToPath(import.meta.url)
+  return path.dirname(__filename)
+}
+const currentDir = getCurrentDir()
+
+const chainConfigRaw = fs.readFileSync(path.resolve(currentDir, 'chainConfig.json'), "utf-8")
 const chainConfig = JSON.parse(chainConfigRaw)
 const TARGET_CHAIN_ID = process.env.chainId
 
