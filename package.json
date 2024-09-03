@@ -12,23 +12,23 @@
     "get-config-common-dev": "pnpm --filter common run get-chain-config-dev",
     "get-config-common-prod": "pnpm --filter common run get-chain-config-dev",
 
-    "set-config-ammv2": "pnpm --filter ammv2 run set-config",
-    "set-config-ammv3": "pnpm --filter ammv3 run set-config",
+    "set-config-ammv2": "pnpm --filter amm-v2 run set-config",
+    "set-config-ammv3": "pnpm --filter amm-v3 run set-config",
     "set-config-blocks": "pnpm --filter blocks run set-config",
     "set-config-incentives": "pnpm --filter incentives run set-config",
 
     "codegen-ammv2": "pnpm --filter amm-v2 run codegen",
-    "codegen-ammv3": "pnpm --filter ammV3 run codegen",
+    "codegen-ammv3": "pnpm --filter amm-v3 run codegen",
     "codegen-blocks": "pnpm --filter blocks run codegen",
     "codegen-incentives": "pnpm --filter incentives run codegen",
 
-    "build-ammv2": "pnpm --filter ammV2 run build",
-    "build-ammv3": "pnpm --filter ammV3 run build",
+    "build-ammv2": "pnpm --filter amm-v2 run build",
+    "build-ammv3": "pnpm --filter amm-v3 run build",
     "build-blocks": "pnpm --filter blocks run build",
     "build-incentives": "pnpm --filter incentives run build",
 
-    "deploy-ammv2": "pnpm --filter ammV2 run deploy",
-    "deploy-ammv3": "pnpm --filter ammV3 run deploy",
+    "deploy-ammv2": "pnpm --filter amm-v2 run deploy",
+    "deploy-ammv3": "pnpm --filter amm-v3 run deploy",
     "deploy-blocks": "pnpm --filter blocks run deploy",
     "deploy-incentives": "pnpm --filter incentives run deploy"
   },
