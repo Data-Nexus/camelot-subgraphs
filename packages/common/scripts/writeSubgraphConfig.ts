@@ -3,7 +3,7 @@ import path from "path"
 import process from "process"
 import yaml from "js-yaml"
 
-import TARGET_CHAIN from "./chainConfig.ts"
+import TARGET_CHAIN from "../helpers/createTargetChain"
 
 const {
   // UNIVERSAL SELECTED CHAIN PARAM - USED FOR `network` IN `subgraph.yaml`

@@ -7,7 +7,7 @@ const ADDRESS_ZERO = '0x0000000000000000000000000000000000000000'
 const FACTORY_ADDRESS = TARGET_CHAIN.factoryV3
 const WRAPPED_NATIVE = TARGET_CHAIN.wrappedNativeV3
 const USDC_WMatic_03_POOL = TARGET_CHAIN.wrappedNativeUSDCPoolV3
-const MINIMUM_Matic_LOCKED = TARGET_CHAIN.minimumMaticLocked
+const MINIMUM_Matic_LOCKED = TARGET_CHAIN.minimumLiquidityThresholdETHV3
 const WHITELIST_TOKENS: string[] = TARGET_CHAIN.whitelistTokensV3
 const STABLE_COINS: string[] = TARGET_CHAIN.stableCoins
 

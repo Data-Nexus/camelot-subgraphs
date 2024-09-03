@@ -8,5 +8,6 @@
     "allowImportingTsExtensions": true,
     "types": ["node"]
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "exclude": ["packages/common/generated/*"]
 }

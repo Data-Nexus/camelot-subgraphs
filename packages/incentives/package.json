@@ -3,12 +3,12 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
-    "set-config": "ts-node-esm -P tsconfig.node.json setConfig.ts",
+    "set-config": "ts-node-esm -P ../../tsconfig.node.json writeSubgraphConfig.ts",
     "codegen": "graph codegen",
     "build": "graph build",
     "deploy": "graph deploy $name --version-label $version --node https://subgraphs.alchemy.com/api/subgraphs/deploy --deploy-key $deployKey --ipfs https://ipfs.satsuma.xyz"
   },
   "devDependencies": {
-    "common": "workspace:*"
+    "common": "*"
   }
 }

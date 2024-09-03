@@ -1,4 +1,5 @@
-import { TARGET_CHAIN, loadSubgraphConfig, saveSubgraphConfig } from "common"
+import TARGET_CHAIN from "common/helpers/createTargetChain.ts"
+import { loadSubgraphConfig, saveSubgraphConfig } from "common/helpers/subgraphConfig.ts"
 
 const {
   // UNIVERSAL SELECTED CHAIN PARAM - USED FOR `network` IN `subgraph.yaml`
