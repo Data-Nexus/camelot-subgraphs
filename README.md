@@ -25,4 +25,27 @@ Deploy all subgraphs to given network
 
 Comment out the deployments in `deployAll.ts` to skip.
 
-All individual build, codegen, etc commands can be run for individual subgraphs from the top level using `pnpm run` or by invoking them from within the sub repos directly. 
+All individual build, codegen, etc commands can be run for individual subgraphs from the top level using `pnpm run` or by invoking them from within the sub repos directly:
+
+1) Fetch chain list config:
+```
+pnpm run get-config-common-dev 
+or
+pnpm run get-config-common-prod
+```
+2) Write the subgraph config to `packages/xxx/subgraph.yaml`:
+```
+pnpm run set-config-ammv2
+```
+3) Generate subgraph artifacts:
+```
+pnpm run codegen-ammv2
+```
+4) Build the subgraph:
+```
+pnpm run build-ammv2
+```
+5) Deploy the subgraph:
+```
+pnpm run deploy-ammv2
+```

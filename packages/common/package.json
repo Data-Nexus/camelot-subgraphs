@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "get-chain-config-dev": "curl -s https://dev.api.camelot.exchange/v2/chains > chainConfig.json",
-    "get-chain-config-prod": "curl -s https://api.camelot.exchange/v2/chains > chainConfig.json"
+    "get-chain-config-dev": "curl -s https://dev.api.camelot.exchange/v2/chains > generated/chainConfig.json",
+    "get-chain-config-prod": "curl -s https://api.camelot.exchange/v2/chains > generated/chainConfig.json"
   },
   "keywords": [],
   "author": "",
