@@ -9,6 +9,6 @@
     "deploy": "graph deploy $name --version-label $version --node https://subgraphs.alchemy.com/api/subgraphs/deploy --deploy-key $deployKey --ipfs https://ipfs.satsuma.xyz"
   },
   "devDependencies": {
-    "common": "*"
+    "common": "workspace:*"
   }
 }
