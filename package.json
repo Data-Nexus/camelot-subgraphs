@@ -8,25 +8,20 @@
   "scripts": {
     "deploy-all-dev": "pnpm --filter common run get-chain-config-dev && ts-node-esm -P tsconfig.node.json deployAll.ts",
     "deploy-all-prod": "pnpm --filter common run get-chain-config-prod && ts-node-esm -P tsconfig.node.json deployAll.ts",
-
     "get-config-common-dev": "pnpm --filter common run get-chain-config-dev",
     "get-config-common-prod": "pnpm --filter common run get-chain-config-dev",
-
     "set-config-ammv2": "pnpm --filter amm-v2 run set-config",
     "set-config-ammv3": "pnpm --filter amm-v3 run set-config",
     "set-config-blocks": "pnpm --filter blocks run set-config",
     "set-config-incentives": "pnpm --filter incentives run set-config",
-
     "codegen-ammv2": "pnpm --filter amm-v2 run codegen",
     "codegen-ammv3": "pnpm --filter amm-v3 run codegen",
     "codegen-blocks": "pnpm --filter blocks run codegen",
     "codegen-incentives": "pnpm --filter incentives run codegen",
-
     "build-ammv2": "pnpm --filter amm-v2 run build",
     "build-ammv3": "pnpm --filter amm-v3 run build",
     "build-blocks": "pnpm --filter blocks run build",
     "build-incentives": "pnpm --filter incentives run build",
-
     "deploy-ammv2": "pnpm --filter amm-v2 run deploy",
     "deploy-ammv3": "pnpm --filter amm-v3 run deploy",
     "deploy-blocks": "pnpm --filter blocks run deploy",
@@ -36,14 +31,15 @@
     "@graphprotocol/graph-cli": "0.69.1",
     "@graphprotocol/graph-ts": "0.31.0",
     "@types/js-yaml": "^4.0.9",
+    "dotenv": "^16.4.5",
     "js-yaml": "^4.1.0",
-    "typescript": "^5.4.2",
-    "ts-node": "10.9.2"
+    "ts-node": "10.9.2",
+    "typescript": "^5.4.2"
   },
   "devDependencies": {
-    "matchstick-as": "0.5.0",
     "command-line-args": "^5.2.1",
-    "command-line-usage": "^7.0.1"
+    "command-line-usage": "^7.0.1",
+    "matchstick-as": "0.5.0"
   },
   "keywords": [],
   "author": "",

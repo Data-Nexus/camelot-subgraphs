@@ -1,17 +1,18 @@
 import { execSync } from 'child_process'
 import fs from "fs"
 import process from 'process'
+import dotenv from 'dotenv';
 
-const chainId = process.env.chainId
+dotenv.config();
 
-const chainConfigRaw = fs.readFileSync("./packages/common/chainConfig.json", "utf-8")
+const CHAIN_ID = process.env.CHAIN_ID || "42161"
+
+const chainConfigRaw = fs.readFileSync("./packages/common/generated/chainConfig.json", "utf-8")
 const chainConfig = JSON.parse(chainConfigRaw)
 
-const parsedChainId = chainId ? parseInt(chainId) : undefined;
-const chain = parsedChainId ? chainConfig.find(chain => chain.id === parsedChainId) : undefined;
-
+const chain = chainConfig.find(chain => parseInt(chain.id) === parseInt(CHAIN_ID))
 console.log(`\n${(new Date(Date.now())).toLocaleString()}\n\n`)
-console.log(`⏳ Deploying to ${chainId}...`)
+console.log(`⏳ Deploying to ${CHAIN_ID}...`)
 
 console.log('\n.::AMM V2::.\n¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨')
 process.env.name = `camelot-ammv2-${chain.verboseId}`
