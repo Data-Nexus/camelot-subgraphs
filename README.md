@@ -11,13 +11,13 @@ Declare env vars
 
 ```
 // chain ID for given deployment
-chainId=
+CHAIN_ID=
 
 // new subgraph version to deploy (edit this in deployAll.ts for each subgraph, will eventually improve this flow)
-version=
+VERSION=
 
 // subgraph deploy key
-deployKey
+DEPLOY_KEY=
 ```
 
 Deploy all subgraphs to given network

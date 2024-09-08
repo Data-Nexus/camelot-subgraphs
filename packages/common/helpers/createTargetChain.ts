@@ -3,6 +3,9 @@ import fs from "fs"
 import path from "path"
 import { fileURLToPath } from 'url'
 import ChainInfo from "./chainInfo.ts"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const getCurrentDir = () => {
   const __filename = fileURLToPath(import.meta.url)
@@ -12,10 +15,9 @@ const currentDir = getCurrentDir()
 
 const chainConfigRaw = fs.readFileSync(path.resolve(currentDir, '../generated/chainConfig.json'), "utf-8")
 const chainConfig = JSON.parse(chainConfigRaw)
-const TARGET_CHAIN_ID = process.env.chainId
+const TARGET_CHAIN_ID = process.env.CHAIN_ID || "42161"
 
-const parsedChainId = TARGET_CHAIN_ID ? parseInt(TARGET_CHAIN_ID, 10) : 42161
-const config = chainConfig.find(chain => chain.id == parsedChainId)
+const config = chainConfig.find(chain => parseInt(chain.id) === parseInt(TARGET_CHAIN_ID))
 
 if (!config) throw new Error("Chain ID not supported")
 
