@@ -9,7 +9,7 @@
     "deploy-all-dev": "pnpm --filter common run get-chain-config-dev && ts-node-esm -P tsconfig.node.json deployAll.ts",
     "deploy-all-prod": "pnpm --filter common run get-chain-config-prod && ts-node-esm -P tsconfig.node.json deployAll.ts",
     "get-config-common-dev": "pnpm --filter common run get-chain-config-dev",
-    "get-config-common-prod": "pnpm --filter common run get-chain-config-dev",
+    "get-config-common-prod": "pnpm --filter common run get-chain-config-prod",
     "set-config-ammv2": "pnpm --filter amm-v2 run set-config",
     "set-config-ammv3": "pnpm --filter amm-v3 run set-config",
     "set-config-blocks": "pnpm --filter blocks run set-config",
