@@ -27,6 +27,7 @@ const subgraphConfig = config?.subgraphs.config
 const network = subgraphConfig?.network || "arbitrum-one"
 
 // AMM V2 PARAMS
+const ammv2Name = config?.subgraphs.ammV2.name
 const factoryV2 = config?.contracts.factoryV2
 const wrappedNativeV2 = config?.assets.native.address
 const wrappedNativeUSDCPoolV2 = config?.assets.nativePairV2
@@ -38,6 +39,7 @@ const minimumLiquidityETH = subgraphConfig?.minimumLiquidityETH
 const startBlockAmmV2 = subgraphConfig?.startBlockAmmV2
 
 // AMM V3 PARAMS
+const ammv3Name = config?.subgraphs.ammV3.name
 const factoryV3 = config?.contracts.factoryV3
 const nftPositionManagerV3 = config?.contracts.nftPositionManagerV3
 const wrappedNativeV3 = config?.assets.native.address
@@ -49,13 +51,18 @@ const apiVersion = subgraphConfig?.apiVersion
 const startBlockAmmV3 = subgraphConfig?.startBlockAmmV3
 
 // INCENTIVES PARAMS
+const incentivesName = config?.subgraphs.incentives.name
 const campaignFactory = config?.contracts.incentivesCampaignFactory
 const distributor = config?.contracts.incentivesDistributor
 const startBlockIncentives = subgraphConfig?.startBlockIncentives
 
+// BLOCKS PARAMS
+const blocksName = config?.subgraphs.blocks.name
+
 const TARGET_CHAIN: ChainInfo = new ChainInfo(
   network,
 
+  ammv2Name,
   factoryV2,
   wrappedNativeV2,
   wrappedNativeUSDCPoolV2,
@@ -66,6 +73,7 @@ const TARGET_CHAIN: ChainInfo = new ChainInfo(
   minimumLiquidityETH,
   startBlockAmmV2,
 
+  ammv3Name,
   factoryV3,
   nftPositionManagerV3,
   wrappedNativeV3,
@@ -76,9 +84,12 @@ const TARGET_CHAIN: ChainInfo = new ChainInfo(
   apiVersion,
   startBlockAmmV3,
 
+  incentivesName,
   campaignFactory,
   distributor,
-  startBlockIncentives
+  startBlockIncentives,
+
+  blocksName,
 )
 
 const targetChainContent = `
@@ -93,6 +104,7 @@ import ChainInfo from '../helpers/chainInfo';
 const TARGET_CHAIN: ChainInfo = new ChainInfo(
   "${network}",
 
+  "${ammv2Name}",
   "${factoryV2}",
   "${wrappedNativeV2}",
   "${wrappedNativeUSDCPoolV2}",
@@ -103,6 +115,7 @@ const TARGET_CHAIN: ChainInfo = new ChainInfo(
   "${minimumLiquidityETH}",
   ${startBlockAmmV2},
 
+  "${ammv3Name}",
   "${factoryV3}",
   "${nftPositionManagerV3}",
   "${wrappedNativeV3}",
@@ -113,9 +126,12 @@ const TARGET_CHAIN: ChainInfo = new ChainInfo(
   "${apiVersion}",
   ${startBlockAmmV3},
 
+  "${incentivesName}",
   "${campaignFactory}",
   "${distributor}",
-  ${startBlockIncentives}
+  ${startBlockIncentives},
+
+  "${blocksName}",
 );
 
 export default TARGET_CHAIN;

@@ -8,6 +8,9 @@
     "get-chain-config-dev": "mkdir -p generated && curl -s https://dev.api.camelot.exchange/v2/chains > generated/chainConfig.json",
     "get-chain-config-prod": "mkdir -p generated && curl -s https://api.camelot.exchange/v2/chains > generated/chainConfig.json"
   },
+  "exports": {
+    "./generated/*": "./generated/*.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

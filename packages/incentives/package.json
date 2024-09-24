@@ -2,11 +2,12 @@
   "name": "incentives",
   "license": "UNLICENSED",
   "type": "module",
+  "version": "0.1.09",
   "scripts": {
     "set-config": "ts-node-esm -P ../../tsconfig.node.json writeSubgraphConfig.ts",
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy $name --version-label $version --node https://subgraphs.alchemy.com/api/subgraphs/deploy --deploy-key $deployKey --ipfs https://ipfs.satsuma.xyz"
+    "deploy": "ts-node-esm --experimental-specifier-resolution=node -P ../../tsconfig.node.json deploy.ts"
   },
   "devDependencies": {
     "common": "workspace:*"
