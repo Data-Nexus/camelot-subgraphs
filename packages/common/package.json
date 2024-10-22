@@ -9,7 +9,7 @@
     "get-chain-config-prod": "mkdir -p generated && curl -s https://api.camelot.exchange/v2/chains > generated/chainConfig.json"
   },
   "exports": {
-    "./generated/*": "./generated/*.ts"
+    "./*": "./*.ts"
   },
   "keywords": [],
   "author": "",

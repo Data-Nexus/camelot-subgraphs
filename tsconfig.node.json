@@ -6,7 +6,10 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "common/*": ["packages/common/*"]
+    }
   },
   "include": ["**/*.ts"],
   "exclude": ["packages/common/generated/*"]
