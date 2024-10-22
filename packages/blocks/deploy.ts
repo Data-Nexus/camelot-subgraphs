@@ -1,5 +1,4 @@
 import TARGET_CHAIN from "common/generated/targetChain"
-import fs from "fs"
 import { fileURLToPath } from 'url'
 import path from "path"
 import {execSync} from "child_process"
@@ -12,6 +11,6 @@ const getCurrentDir = () => {
 const currentDir = getCurrentDir()
 dotenv.config({ path: path.resolve(currentDir, '../../.env') });
 
-const version = JSON.parse(fs.readFileSync("package.json", "utf-8")).version
+const { VERSION_BLOCKS, DEPLOY_KEY  } = process.env
 
-execSync(`graph deploy ${TARGET_CHAIN.blocksName} --version-label ${version} --node https://subgraphs.alchemy.com/api/subgraphs/deploy --deploy-key ${process.env.DEPLOY_KEY} --ipfs https://ipfs.satsuma.xyz`, { stdio: 'inherit' })
+execSync(`graph deploy ${TARGET_CHAIN.blocksName} --version-label ${VERSION_BLOCKS} --node https://subgraphs.alchemy.com/api/subgraphs/deploy --deploy-key ${DEPLOY_KEY} --ipfs https://ipfs.satsuma.xyz`, { stdio: 'inherit' })
