@@ -1,17 +1,15 @@
-import process from "process"
 import fs from "fs"
-import path from "path"
 import { fileURLToPath } from 'url'
+import path from "path"
 import ChainInfo from "./chainInfo.ts"
 import dotenv from "dotenv"
-
-dotenv.config({ path: '../../.env' });
 
 const getCurrentDir = () => {
   const __filename = fileURLToPath(import.meta.url)
   return path.dirname(__filename)
 }
 const currentDir = getCurrentDir()
+dotenv.config({ path: path.resolve(currentDir, '../../../.env') });
 
 const chainConfigRaw = fs.readFileSync(path.resolve(currentDir, '../generated/chainConfig.json'), "utf-8")
 const chainConfig = JSON.parse(chainConfigRaw)
