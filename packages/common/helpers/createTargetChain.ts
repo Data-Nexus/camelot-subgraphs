@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 import ChainInfo from "./chainInfo.ts"
 import dotenv from "dotenv"
 
-dotenv.config()
+dotenv.config({ path: '../../.env' });
 
 const getCurrentDir = () => {
   const __filename = fileURLToPath(import.meta.url)
@@ -52,12 +52,16 @@ const startBlockAmmV3 = subgraphConfig?.startBlockAmmV3
 
 // INCENTIVES PARAMS
 const incentivesName = config?.subgraphs.incentives.name
-const campaignFactory = config?.contracts.campaignFactory
-const distributor = config?.contracts.distributor
+const campaignFactory = config?.contracts.incentivesCampaignFactory
+const distributor = config?.contracts.incentivesDistributor
 const startBlockIncentives = subgraphConfig?.startBlockIncentives
 
 // BLOCKS PARAMS
 const blocksName = config?.subgraphs.blocks.name
+
+// name is undefined, need to edit
+
+console.log(config?.subgraphs.ammV2)
 
 const TARGET_CHAIN: ChainInfo = new ChainInfo(
   network,
