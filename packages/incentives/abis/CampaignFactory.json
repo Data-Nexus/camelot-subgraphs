@@ -135,6 +135,11 @@
     "type": "error"
   },
   {
+    "inputs": [],
+    "name": "Paused",
+    "type": "error"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -335,6 +340,18 @@
       }
     ],
     "name": "ProtocolFeeUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [],
+    "name": "ProtocolPaused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [],
+    "name": "ProtocolUnpaused",
     "type": "event"
   },
   {
@@ -578,6 +595,25 @@
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "campaignId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCampaignAddressList",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "token",
         "type": "address"
@@ -654,6 +690,26 @@
   },
   {
     "inputs": [],
+    "name": "pauseProtocol",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "paused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "protocolFee",
     "outputs": [
       {
@@ -717,6 +773,13 @@
       }
     ],
     "name": "unpause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "unpauseProtocol",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
