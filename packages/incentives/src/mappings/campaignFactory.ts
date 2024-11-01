@@ -1,4 +1,4 @@
-import {BigInt} from "@graphprotocol/graph-ts/index";
+import { BigInt, Bytes } from "@graphprotocol/graph-ts";
 import { 
   CampaignCreated,
   CampaignCanceled,
@@ -8,7 +8,8 @@ import {
   CustomFeeUpdated,
   ProtocolFeeUpdated,
   TokenAllowedStatusUpdated,
-  TokenMinIncentiveUpdated
+  TokenMinIncentiveUpdated,
+  CampaignFactory
 } from '../../generated/campaignFactory/CampaignFactory';
 import { 
   getOrCreateCampaignFactory,
@@ -21,6 +22,7 @@ import { BPS_DIVISOR } from './constants'
 
 export function handleCampaignCreated(event: CampaignCreated): void {
   let campaign = getOrCreateCampaign(event.params.campaignId.toString(), event.block.timestamp)
+  let campaignFactoryContract = CampaignFactory.bind(event.address)
   let user = getOrCreateUser(event.params.creator, event.block.timestamp)
   let token = getOrCreateToken(event.params.token, event.block.timestamp)
 
@@ -35,6 +37,13 @@ export function handleCampaignCreated(event: CampaignCreated): void {
   campaign.rewardsOptions = event.params.rewardsOptions
   campaign.createdAt = event.block.timestamp
   campaign.lastUpdated = event.block.timestamp
+
+  let campaignAddressList: Array<Bytes> = []
+  let addressList = campaignFactoryContract.getCampaignAddressList(event.params.campaignId)
+  for (let i = 0; i < addressList.length; ++i) {
+    campaignAddressList.push(addressList[i] as Bytes)
+  }
+  campaign.addressList = campaignAddressList
 
   campaign.save()
 }

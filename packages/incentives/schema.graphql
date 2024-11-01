@@ -68,6 +68,9 @@ type Campaign @entity {
 
   # campaigns rewards options
   rewardsOptions: Bytes!
+
+  # campaigns address list (bl/wl)
+  addressList: [Bytes!]!
 }
 
 type User @entity {
