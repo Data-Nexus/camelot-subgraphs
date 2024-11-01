@@ -29,7 +29,7 @@ export function handleCampaignCreated(event: CampaignCreated): void {
   campaign.pool = event.params.pool
   campaign.rewards = event.params.rewards.div(pow10(token.decimals)).toBigDecimal()
   campaign.status = "active"
-  campaign.incentiveType = "allow"
+  campaign.incentiveType = BigInt.fromI32(event.params.incentiveType)
   campaign.startTime = event.params.startTime
   campaign.endTime = event.params.endTime
   campaign.createdAt = event.block.timestamp

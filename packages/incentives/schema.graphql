@@ -52,7 +52,7 @@ type Campaign @entity {
   status: String!
 
   # incentive type: allow, deny
-  incentiveType: String!
+  incentiveType: BigInt!
 
   # campaign start time
   startTime: BigInt!
