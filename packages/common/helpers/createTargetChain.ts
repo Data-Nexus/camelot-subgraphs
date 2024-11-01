@@ -59,7 +59,10 @@ const blocksName = config?.subgraphs.blocks.name
 
 // name is undefined, need to edit
 
-console.log(config?.subgraphs.ammV2)
+console.log("AMMv2", config?.subgraphs.ammV2)
+console.log("AMMv3", config?.subgraphs.ammV3)
+console.log("blocks", config?.subgraphs.blocks)
+console.log("incentives", config?.subgraphs.incentives)
 
 const TARGET_CHAIN: ChainInfo = new ChainInfo(
   network,
