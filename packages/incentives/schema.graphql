@@ -126,6 +126,9 @@ type Claim @entity {
   # claim token address
   token: Token!
 
+  # position identifier
+  positionIdentifier: Bytes!
+
   # amount of token claimed
   amount: BigDecimal!
 
@@ -134,5 +137,8 @@ type Claim @entity {
 
   # timestamp of claim
   timestamp: BigInt!
+
+  # transaction hash
+  txHash: Bytes!
 }
 

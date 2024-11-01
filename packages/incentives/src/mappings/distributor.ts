@@ -13,9 +13,9 @@ import {
 } from './helpers'
 
 export function handleClaimed(event: Claimed): void {
-  let claim = new Claim(event.params.identifier)
   let token = getOrCreateToken(event.params.token, event.block.timestamp)
   let user = getOrCreateUser(event.params.user, event.block.timestamp)
+  let claim = new Claim(event.transaction.hash.concatI32(event.logIndex.toI32()))
 
   claim.user = user.id
   claim.pool = event.params.pool
@@ -23,6 +23,8 @@ export function handleClaimed(event: Claimed): void {
   claim.amount = event.params.amount.toBigDecimal().div(pow10(token.decimals))
   claim.accAmount = event.params.accAmount.toBigDecimal().div(pow10(token.decimals))
   claim.timestamp = event.block.timestamp
+  claim.txHash = event.transaction.hash
+  claim.positionIdentifier = event.params.identifier
 
   claim.save()
 }
