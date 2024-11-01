@@ -1,15 +1,14 @@
-import {BigDecimal, BigInt, Address} from "@graphprotocol/graph-ts/index";
+import {BigDecimal, BigInt, Address} from "@graphprotocol/graph-ts";
 import { CAMPAIGN_FACTORY_ADDRESS, DISTRIBUTOR_ADDRESS } from './constants'
 import { CampaignFactory, Campaign, Distributor, User, Token } from '../../generated/schema'
 import { ERC20 } from '../../generated/campaignFactory/ERC20'
 
-export function pow10(decimals: BigInt): BigInt {
-  let result = BigInt.fromI32(1);
-  let count = decimals.toI32();
-  for (let i = 0; i < count; i++) {
-    result = result.times(BigInt.fromI32(10));
+export function pow10(decimals: BigInt): BigDecimal {
+  let bd = BigDecimal.fromString('1')
+  for (let i = BigInt.fromI32(0); i.lt(decimals as BigInt); i = i.plus(BigInt.fromI32(1))) {
+    bd = bd.times(BigDecimal.fromString('10'))
   }
-  return result;
+  return bd
 }
 
 export function getOrCreateDistributor(blockTime: BigInt): Distributor {

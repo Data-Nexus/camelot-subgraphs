@@ -20,8 +20,8 @@ export function handleClaimed(event: Claimed): void {
   claim.user = user.id
   claim.pool = event.params.pool
   claim.token = token.id
-  claim.amount = event.params.amount.div(pow10(token.decimals)).toBigDecimal()
-  claim.accAmount = event.params.accAmount.div(pow10(token.decimals)).toBigDecimal()
+  claim.amount = event.params.amount.toBigDecimal().div(pow10(token.decimals))
+  claim.accAmount = event.params.accAmount.toBigDecimal().div(pow10(token.decimals))
   claim.timestamp = event.block.timestamp
 
   claim.save()

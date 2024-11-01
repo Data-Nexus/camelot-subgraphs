@@ -29,7 +29,7 @@ export function handleCampaignCreated(event: CampaignCreated): void {
   campaign.creator = user.id
   campaign.token = token.id
   campaign.pool = event.params.pool
-  campaign.rewards = event.params.rewards.div(pow10(token.decimals)).toBigDecimal()
+  campaign.rewards = event.params.rewards.toBigDecimal().div(pow10(token.decimals))
   campaign.status = "active"
   campaign.incentiveType = BigInt.fromI32(event.params.incentiveType)
   campaign.startTime = event.params.startTime
@@ -77,7 +77,7 @@ export function handleCampaignUpdated(event: CampaignUpdated): void {
   let token = getOrCreateToken(event.params.token, event.block.timestamp)
 
   campaign.token = token.id
-  campaign.rewards = event.params.rewards.div(pow10(token.decimals)).toBigDecimal()
+  campaign.rewards = event.params.rewards.toBigDecimal().div(pow10(token.decimals))
   campaign.endTime = event.params.endTime
   campaign.lastUpdated = event.block.timestamp
 
@@ -114,7 +114,7 @@ export function handleTokenAllowedStatusUpdated(event: TokenAllowedStatusUpdated
 export function handleTokenMinIncentiveUpdated(event: TokenMinIncentiveUpdated): void {
   let token = getOrCreateToken(event.params.token, event.block.timestamp)
 
-  token.minimum = event.params.minIncentive.div(pow10(token.decimals)).toBigDecimal()
+  token.minimum = event.params.minIncentive.toBigDecimal().div(pow10(token.decimals))
   token.lastUpdated = event.block.timestamp
 
   token.save()
