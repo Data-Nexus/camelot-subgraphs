@@ -32,6 +32,7 @@ export function handleCampaignCreated(event: CampaignCreated): void {
   campaign.incentiveType = BigInt.fromI32(event.params.incentiveType)
   campaign.startTime = event.params.startTime
   campaign.endTime = event.params.endTime
+  campaign.rewardsOptions = event.params.rewardsOptions
   campaign.createdAt = event.block.timestamp
   campaign.lastUpdated = event.block.timestamp
 

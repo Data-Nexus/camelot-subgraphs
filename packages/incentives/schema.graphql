@@ -65,6 +65,9 @@ type Campaign @entity {
 
   # campaign last updated time
   lastUpdated: BigInt!
+
+  # campaigns rewards options
+  rewardsOptions: Bytes!
 }
 
 type User @entity {
