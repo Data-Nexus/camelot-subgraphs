@@ -46,7 +46,7 @@ type Campaign @entity {
   pool: Bytes!
 
   # amount of rewards token to be distributed for the campaign
-  rewards: BigDecimal!
+  rewards: BigInt!
 
   # campaign status: cancelled, paused, active
   status: String!
@@ -98,7 +98,7 @@ type Token @entity {
   allowed: Boolean!
 
   # minimum amount a token can be given per campaign
-  minimum: BigDecimal!
+  minimum: BigInt!
 
   # token name
   name: String!
@@ -130,10 +130,10 @@ type Claim @entity {
   positionIdentifier: Bytes!
 
   # amount of token claimed
-  amount: BigDecimal!
+  amount: BigInt!
 
   # accumulated amount of token claimed
-  accAmount: BigDecimal!
+  accAmount: BigInt!
 
   # timestamp of claim
   timestamp: BigInt!

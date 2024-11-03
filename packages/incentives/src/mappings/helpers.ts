@@ -3,13 +3,6 @@ import { CAMPAIGN_FACTORY_ADDRESS, DISTRIBUTOR_ADDRESS } from './constants'
 import { CampaignFactory, Campaign, Distributor, User, Token } from '../../generated/schema'
 import { ERC20 } from '../../generated/campaignFactory/ERC20'
 
-export function pow10(decimals: BigInt): BigDecimal {
-  let bd = BigDecimal.fromString('1')
-  for (let i = BigInt.fromI32(0); i.lt(decimals as BigInt); i = i.plus(BigInt.fromI32(1))) {
-    bd = bd.times(BigDecimal.fromString('10'))
-  }
-  return bd
-}
 
 export function getOrCreateDistributor(blockTime: BigInt): Distributor {
   let distributor = Distributor.load(DISTRIBUTOR_ADDRESS)
@@ -84,7 +77,7 @@ export function getOrCreateToken(address: Address, blockTime: BigInt): Token {
     token.symbol = symbolValue
     token.decimals = decimalValue
     token.allowed = true
-    token.minimum = new BigDecimal(BigInt.fromI32(0))
+    token.minimum = BigInt.fromI32(0)
     token.lastUpdated = blockTime
     
     token.save()

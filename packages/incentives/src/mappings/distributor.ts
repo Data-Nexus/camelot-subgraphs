@@ -8,8 +8,7 @@ import { Claim } from '../../generated/schema'
 import { 
   getOrCreateDistributor,
   getOrCreateToken,
-  getOrCreateUser,
-  pow10
+  getOrCreateUser
 } from './helpers'
 
 export function handleClaimed(event: Claimed): void {
@@ -20,8 +19,8 @@ export function handleClaimed(event: Claimed): void {
   claim.user = user.id
   claim.pool = event.params.pool
   claim.token = token.id
-  claim.amount = event.params.amount.toBigDecimal().div(pow10(token.decimals))
-  claim.accAmount = event.params.accAmount.toBigDecimal().div(pow10(token.decimals))
+  claim.amount = event.params.amount
+  claim.accAmount = event.params.accAmount
   claim.timestamp = event.block.timestamp
   claim.txHash = event.transaction.hash
   claim.positionIdentifier = event.params.identifier
