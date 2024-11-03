@@ -50,8 +50,8 @@ const startBlockAmmV3 = subgraphConfig?.startBlockAmmV3
 
 // INCENTIVES PARAMS
 const incentivesName = config?.subgraphs.incentives.name
-const campaignFactory = config?.contracts.incentivesCampaignFactory
-const distributor = config?.contracts.incentivesDistributor
+const campaignFactory = config?.contracts.campaignFactory
+const distributor = config?.contracts.distributor
 const startBlockIncentives = subgraphConfig?.startBlockIncentives
 
 // BLOCKS PARAMS
