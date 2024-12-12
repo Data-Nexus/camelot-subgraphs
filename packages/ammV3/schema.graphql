@@ -209,6 +209,8 @@ type PoolPosition @entity {
   uncollectedBurnedAmount1: BigDecimal!
   collectedFeesToken0: BigDecimal!
   collectedFeesToken1: BigDecimal!
+  # block at which position was updated
+  lastUpdatedAtBlock: BigInt!
 }
 
 type Position @entity {
@@ -217,6 +219,8 @@ type Position @entity {
   id: ID!
   # owner of the NFT
   owner: User!
+  # previous owner of the NFT
+  prevOwner: User!
   # pool position is within
   pool: Pool!
   # allow indexing by tokens
@@ -252,7 +256,10 @@ type Position @entity {
   feeGrowthInside1LastX128: BigInt!
 
   token0Tvl : BigDecimal
-  token1Tvl : BigDecimal 
+  token1Tvl : BigDecimal
+
+  # block at which position was updated
+  lastUpdatedAtBlock: BigInt!
 }
 
 type PositionSnapshot @entity {

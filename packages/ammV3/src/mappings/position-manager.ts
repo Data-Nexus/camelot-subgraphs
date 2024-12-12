@@ -53,6 +53,7 @@ function getPosition(event: ethereum.Event, tokenId: BigInt): Position | null {
       position = new Position(tokenId.toString())
       // The owner gets correctly updated in the Transfer handler
       position.owner = owner.id
+      position.prevOwner = owner.id
       position.pool = poolAddress.toHexString()
       if(poolsList.includes(position.pool)){
         position.token0 = positionResult.value3.toHexString()
@@ -80,8 +81,6 @@ function getPosition(event: ethereum.Event, tokenId: BigInt): Position | null {
   }
 
   return position
-  
-  return null 
 }
 
 
@@ -165,8 +164,8 @@ export function handleIncreaseLiquidity(event: IncreaseLiquidity): void {
   
 
   // recalculatePosition(position)
-  
-  
+
+  position.lastUpdatedAtBlock = event.block.number
   position.save()
 
   savePositionSnapshot(position, event)
@@ -207,6 +206,7 @@ export function handleDecreaseLiquidity(event: DecreaseLiquidity): void {
   position = updateFeeVars(position, event, event.params.tokenId)
   // recalculatePosition(position)
 
+  position.lastUpdatedAtBlock = event.block.number
   position.save()
 
   savePositionSnapshot(position, event)
@@ -265,6 +265,7 @@ export function handleCollect(event: Collect): void {
 
   // recalculatePositi5on(position)
 
+  position.lastUpdatedAtBlock = event.block.number
   position.save()
   poolUser.save()
 
@@ -280,8 +281,11 @@ export function handleTransfer(event: Transfer): void {
     return
   }
 
+  position.prevOwner = position.owner
   let owner = getUser(event.params.to)
   position.owner = owner.id
+
+  position.lastUpdatedAtBlock = event.block.number
   position.save()
 
   savePositionSnapshot(position, event)
