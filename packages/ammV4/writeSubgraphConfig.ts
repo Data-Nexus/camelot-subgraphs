@@ -5,9 +5,9 @@ const {
   // UNIVERSAL SELECTED CHAIN PARAM - USED FOR `network` IN `subgraph.yaml`
   network,
 
-  // AMM V3 PARAMS
-  factoryV3,
-  nftPositionManagerV3,
+  // AMM V4 PARAMS
+  factoryV4,
+  nftPositionManagerV4,
   startBlock,
   apiVersion,
 } = TARGET_CHAIN
@@ -18,12 +18,12 @@ const factory = subgraphYaml.dataSources[0]
 const NFTPositionManager = subgraphYaml.dataSources[1]
 
 factory.network = network
-factory.source.address = factoryV3
+factory.source.address = factoryV4
 factory.source.startBlock = startBlock
 factory.mapping.apiVersion = apiVersion
 
 NFTPositionManager.network = network
-NFTPositionManager.source.address = nftPositionManagerV3
+NFTPositionManager.source.address = nftPositionManagerV4
 NFTPositionManager.source.startBlock = startBlock
 NFTPositionManager.mapping.apiVersion = apiVersion
 
