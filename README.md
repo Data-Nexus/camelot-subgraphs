@@ -1,8 +1,9 @@
 # Camelot Subgraphs Master 
 
 ## Subgraphs List
-- AMM V2
-- AMM v3
+- AMMv2
+- AMMv3
+- AMMv4
 - Blocks
 - Incentives
 
@@ -13,17 +14,18 @@ Declare env vars
 // chain ID for given deployment
 CHAIN_ID=
 
-// new subgraph version to deploy (edit this in deployAll.ts for each subgraph, will eventually improve this flow)
-VERSION=
+// subgraph versions to deploy
+VERSION_AMMV2=
+VERSION_AMMV3=
+VERSION_AMMV4=
+VERSION_BLOCKS=
 
 // subgraph deploy key
 DEPLOY_KEY=
 ```
 
-Deploy all subgraphs to given network
-`pnpm run deploy-all-prod` or `pnpm run deploy-all-dev`
-
-Comment out the deployments in `deployAll.ts` to skip.
+Deploy a subgraph to given network
+`pnpm run deploy-<subgraph_name>`
 
 All individual build, codegen, etc commands can be run for individual subgraphs from the top level using `pnpm run` or by invoking them from within the sub repos directly:
 
@@ -35,17 +37,24 @@ pnpm run get-config-common-prod
 ```
 2) Write the subgraph config to `packages/xxx/subgraph.yaml`:
 ```
-pnpm run set-config-ammv2
+pnpm run set-config-<subgraph_name>
 ```
 3) Generate subgraph artifacts:
 ```
-pnpm run codegen-ammv2
+pnpm run codegen-<subgraph_name>
 ```
 4) Build the subgraph:
 ```
-pnpm run build-ammv2
+pnpm run build-<subgraph_name>
 ```
 5) Deploy the subgraph:
 ```
-pnpm run deploy-ammv2
+pnpm run deploy-<subgraph_name>
+```
+
+## Manual deployments
+
+Alternatively, you can also use manual commands inside every subrepo via the following:
+```
+pnpm --filter <package> exec graph deploy [...]
 ```
