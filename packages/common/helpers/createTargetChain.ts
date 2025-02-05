@@ -39,18 +39,21 @@ const ammv2Name = config?.subgraphs.ammV2.name
 const factoryV2 = config?.contracts.factoryV2?.toLowerCase()
 const wrappedNativeUSDCPoolV2 = config?.assets.nativePairV2?.toLowerCase()
 const stableCoin = config?.assets.stable.toLowerCase()
+const nativePairsV2 = config?.assets.nativePairsV2
 
 // AMM V3 PARAMS
 const ammv3Name = config?.subgraphs.ammV3.name
 const factoryV3 = config?.contracts.factoryV3?.toLowerCase()
 const nftPositionManagerV3 = config?.contracts.nftPositionManagerV3?.toLowerCase()
 const wrappedNativeUSDCPoolV3 = config?.assets.nativePairV3?.toLowerCase()
+const nativePairsV3 = config?.assets.nativePairsV3
 
 // AMM V4 PARAMS
 const ammv4Name = config?.subgraphs.ammV4.name
 const factoryV4 = config?.contracts.factoryV4?.toLowerCase()
 const nftPositionManagerV4 = config?.contracts.nftPositionManagerV4?.toLowerCase()
 const wrappedNativeUSDCPoolV4 = config?.assets.nativePairV4?.toLowerCase()
+const nativePairsV4 = config?.assets.nativePairsV3
 
 // INCENTIVES PARAMS
 const incentivesName = config?.subgraphs.incentives.name
@@ -83,18 +86,21 @@ const TARGET_CHAIN: ChainInfo = new ChainInfo(
   factoryV2,
   wrappedNativeUSDCPoolV2,
   stableCoin,
+  nativePairsV2,
 
   // AMM V3 PARAMS
   ammv3Name,
   factoryV3,
   nftPositionManagerV3,
   wrappedNativeUSDCPoolV3,
+  nativePairsV3,
 
   // AMM V4 PARAMS
   ammv4Name,
   factoryV4,
   nftPositionManagerV4,
   wrappedNativeUSDCPoolV4,
+  nativePairsV4,
 
   // INCENTIVES PARAMS
   incentivesName,

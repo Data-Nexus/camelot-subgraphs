@@ -18,18 +18,21 @@ class ChainInfo {
   factoryV2: string;
   wrappedNativeUSDCPoolV2: string;
   stableCoin: string;
+  nativePairsV2: Array<string>;
 
   // AMM V3 PARAMS
   ammv3Name: string;
   factoryV3: string;
   nftPositionManagerV3: string;
   wrappedNativeUSDCPoolV3: string;
+  nativePairsV3: Array<string>;
 
   // AMM V4 PARAMS
   ammv4Name: string;
   factoryV4: string;
   nftPositionManagerV4: string;
   wrappedNativeUSDCPoolV4: string;
+  nativePairsV4: Array<string>;
 
   // BLOCKS PARAMS
   blocksName: string;
@@ -58,17 +61,21 @@ class ChainInfo {
     factoryV2: string,
     wrappedNativeUSDCPoolV2: string,
     stableCoin: string,
+    nativePairsV2: Array<string>,
+
     // AMM V3 PARAMS
     ammv3Name: string,
     factoryV3: string,
     nftPositionManagerV3: string,
     wrappedNativeUSDCPoolV3: string,
+    nativePairsV3: Array<string>,
 
     // AMM V4 PARAMS
     ammv4Name: string,
     factoryV4: string,
     nftPositionManagerV4: string,
     wrappedNativeUSDCPoolV4: string,
+    nativePairsV4: Array<string>,
 
     // INCENTIVES PARAMS
     incentivesName: string,
@@ -96,17 +103,21 @@ class ChainInfo {
     this.factoryV2 = factoryV2 ? factoryV2.toLowerCase() : ZERO_ADDRESS
     this.wrappedNativeUSDCPoolV2 = wrappedNativeUSDCPoolV2 ? wrappedNativeUSDCPoolV2.toLowerCase() : ZERO_ADDRESS
     this.stableCoin = stableCoin ? stableCoin.toLowerCase() : ZERO_ADDRESS
+    this.nativePairsV2 = nativePairsV2 ? nativePairsV2 : [ZERO_ADDRESS.toString()]
+
     // AMM V3 PARAMS
     this.ammv3Name = ammv3Name
     this.factoryV3 = factoryV3 ? factoryV3.toLowerCase() : ZERO_ADDRESS
     this.nftPositionManagerV3 = nftPositionManagerV3 ? nftPositionManagerV3.toLowerCase() : ZERO_ADDRESS
     this.wrappedNativeUSDCPoolV3 = wrappedNativeUSDCPoolV3 ? wrappedNativeUSDCPoolV3.toLowerCase() : ZERO_ADDRESS
+    this.nativePairsV3 = nativePairsV3 ? nativePairsV3 : [ZERO_ADDRESS.toString()]
 
     // AMM V4 PARAMS
     this.ammv4Name = ammv4Name
     this.factoryV4 = factoryV4 ? factoryV4.toLowerCase() : ZERO_ADDRESS
     this.nftPositionManagerV4 = nftPositionManagerV4 ? nftPositionManagerV4.toLowerCase() : ZERO_ADDRESS
     this.wrappedNativeUSDCPoolV4 = wrappedNativeUSDCPoolV4 ? wrappedNativeUSDCPoolV4.toLowerCase() : ZERO_ADDRESS
+    this.nativePairsV4 = nativePairsV4 ? nativePairsV4 : [ZERO_ADDRESS.toString()]
 
     // INCENTIVES PARAMS
     this.incentivesName = incentivesName

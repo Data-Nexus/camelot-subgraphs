@@ -2,6 +2,7 @@
 import {
   WRAPPED_NATIVE,
   USDC_WMatic_03_POOL,
+  NATIVE_PAIRSV3,
   MINIMUM_Matic_LOCKED,
   WHITELIST_TOKENS,
   STABLE_COINS,
@@ -28,14 +29,27 @@ export function priceToTokenPrices(price: BigInt, token0: Token, token1: Token):
 }
 
 export function getEthPriceInUSD(): BigDecimal {
-  let usdcPool = Pool.load(USDC_WMatic_03_POOL) // dai is token0
+
+  let usdcPool: Pool
+  for (let index = 0; index < NATIVE_PAIRSV3.length; index++ ) {
+    let poolchecker = Pool.load(NATIVE_PAIRSV3[index])
+
+    if(!usdcPool) {
+      usdcPool = poolchecker
+    }
+
+    if(usdcPool.totalValueLockedUSD.lt(poolchecker.totalValueLockedUSD)) {
+      usdcPool = poolchecker
+    }
+  }
+
+  //let usdcPool = Pool.load(USDC_WMatic_03_POOL) // dai is token0
   if (usdcPool !== null) {
     return STABLE_COINS.includes(usdcPool.token0) ? usdcPool.token0Price : usdcPool.token1Price
   } else {
     return ZERO_BD
   }
 } 
-
 
 /**
  * Search through graph to find derived Eth per token.
